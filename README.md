@@ -2,19 +2,12 @@
 
 A streaming media player based on Electron and Shaka-player.
 
+# Regarding the current status of CharmingTVBox
+CharmingTVBox was initially developed as a lightweight player for PC with a clean interface, primarily to support simple DASH and HLS playback. However, many users seemed to expect more capabilities from it. Due to limitations inherent in Electron and Chromium, it couldn’t meet demands such as cross-platform support across mobile and TV devices, or more advanced decoding capabilities.
 
-## CHANGELOG
+Therefore, I shifted my focus to MPV and VLC as underlying engines and chose Flutter as the framework to build a new player. This new player supports DASH and HLS playback as before, but can also handle a wider variety of unusual media formats. In theory, it is designed to be cross-platform, but given limited resources, the initial release will likely support only macOS and Windows. Once the features stabilize, support for TV platforms and Android/iOS will be considered.
 
+However, it is impossible to release on iOS App Store because the DASH decryption component completely violates Apple’s policies by bypassing the system’s native, regulated decryption channels.
 
-### 1.2.1
-* **播放核心优化**：为提升兼容性，非 mpd 声明的流将暂时强制通过 hls 协议播放，暂时解决部分hls流的媒体类型判断错误问题。后续考虑引入多播放器库以优化体验。
-* **缓存机制调整**：已禁用缓存，确保 m3u8 播放列表能即时获取最新内容，防止因缓存数据过时导致的问题。
-* **请求策略变更**：请求 header 已默认移除 Referer。后续版本再支持在自定义 header 中配置Referer。
+The new player is named Charming Player. Progress is going well, it’s now in the final stages of development, and I look forward to sharing it with everyone soon.
 
-
-### 1.2.1
-* **字幕样式自定义**： 新增字幕样式修改功能，支持个性化设置。
-* **播放列表缓存**： 在线链接类 m3u 将缓存至本地，提升加载速度，并提供手动更新选项。
-* **EPG 节目指南**： 集成 EPG (电子节目指南) 功能，方便您预览节目信息。
-* **默认字幕轨道**： 播放时将自动选择第一条可用的字幕轨道。
-* **修复与优化**： 修复了全屏模式下返回主页后无法正常退出全屏状态的错误。
